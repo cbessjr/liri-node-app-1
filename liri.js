@@ -10,6 +10,14 @@ const spotify = new Spotify(keys.spotify);
 const fs = require('fs');
 
 
+// function to log
+const logger = (content) => {
+  fs.appendFile('log.txt', `\n ${content}`, 'utf8', err => {
+    if(err) throw err;
+  })
+}
+
+
 
 // concert-this function
 const concertSearch = (artist = 'LCD Soundsystem') => {
@@ -18,8 +26,10 @@ const concertSearch = (artist = 'LCD Soundsystem') => {
   request('https://rest.bandsintown.com/artists/' + artist + '/events?app_id=codingbootcamp', (err, resp, body) => {
     // check for success
     if (!err && resp.statusCode === 200) {
-      // Inform user whether any concerts are upcoming
-      console.log(!!JSON.parse(body)[0] ? `Here are the upcoming concerts for ${artist}` : `No concerts scheduled for ${artist} at this time.`)
+      // Inform user whether any concerts are upcoming, checking whether any results are returned first
+      let informString = !!JSON.parse(body)[0] ? `Here are the upcoming concerts for ${artist}` : `No concerts scheduled for ${artist} at this time.`
+      console.log(informString)
+      logger(`${informString}\n`)     
       // for each entry
       JSON.parse(body).forEach(entry => {
         // grab venue name, city/region/country
@@ -32,10 +42,12 @@ const concertSearch = (artist = 'LCD Soundsystem') => {
         // if there's a region, log out this way
         if (region) {
           console.log('------\n', name+'\n', `${city}, ${region}, ${country}\n`, date)
+          logger(`${name}\n ${city}, ${region}, ${country}\n ${date}\n`)
         }
         // else log out this way
         else {
           console.log('------\n', name+'\n', `${city}, ${country}\n`, date)
+          logger(`${name}\n ${city}, ${country}\n ${date}\n`)
         }
       })     
     }
@@ -77,6 +89,7 @@ const spotifySearch = (song = 'The Sign Ace of Base') => {
         let prevUrl = firstResult['preview_url'] ? 'Preview: ' + firstResult['preview_url'] : 'Listen here (requires account): ' + firstResult['external_urls']['spotify']
         // display result to user
         console.log(`Song: ${songName}\nArtist(s): ${artists}\nAlbum: ${album}\n${prevUrl}`)
+        logger(`Song: ${songName}\nArtist(s): ${artists}\nAlbum: ${album}\n${prevUrl}\n`)
       }
     )
 }
@@ -91,25 +104,32 @@ const movieSearch = (movie = 'Mr. Nobody') => {
     if (resp.statusCode === 200) {      
       let film = JSON.parse(body);
       // if it found a film
-      if (film.Response === 'True') {            
-        // log out the appropriate values      
-        console.log(`* Title: ${film.Title}`)
-        console.log(`* Released: ${film.Year}`)
-        console.log(`* IMDB Rating: ${film.Ratings[0]['Value']}`)
-        console.log(`* Rotten Tomatoes Rating: ${film.Ratings[1]['Value']}`)
-        console.log(`* Produced In: ${film.Country}`)
-        console.log(`* Language(s): ${film.Language}`)
-        console.log(`* Plot: ${film.Plot}`)
-        console.log(`* Actors: ${film.Actors}`)
+      if (film.Response === 'True') {         
+        let output = `\n* Title: ${film.Title}\n* Released: ${film.Year}\n* IMDB Rating: ${film.Ratings[0]['Value']}\n* Rotten Tomatoes Rating: ${film.Ratings[1]['Value']}\n* Produced In: ${film.Country}\n* Language(s): ${film.Language}\n* Plot: ${film.Plot}\n* Actors: ${film.Actors}\n`
+        console.log(output)
+        logger(output)
       }
       // inform user if it found no film
-      else console.log(film.Error)
+      else {
+        console.log(film.Error)
+        logger(film.Error)
+      }
     }    
   })
 }
 
 // do-what-it-says function
 const randomSearch = () => {
+
+  // // This is the way the homework wanted us to do it, but I changed random.txt to allow for a true random experience
+  // fs.readFile('random.txt', 'utf8', (err, data) => {
+  //   if (err) throw err;
+  //   let parsed = data.split(',');
+  //   let method = parsed[0].slice(0, parsed[0].indexOf('-'));
+  //   methods[method](parsed[1])
+  // })
+
+
   // grab the contents of random.txt
   fs.readFile('random.txt', 'utf8', (err, data) => {
     // handle errors
@@ -122,16 +142,7 @@ const randomSearch = () => {
     let method = option['method'].slice(0, option['method'].indexOf('-'));
     // run the appropriate function
     methods[method](option['input'])  
-  })
-
-  
-  // // This is the way the homework wanted us to do it, but I changed random.txt to allow for a true random experience
-  // fs.readFile('random.txt', 'utf8', (err, data) => {
-  //   if (err) throw err;
-  //   let parsed = data.split(',');
-  //   let method = parsed[0].slice(0, parsed[0].indexOf('-'));
-  //   methods[method](parsed[1])
-  // })
+  })  
 }
 
 
