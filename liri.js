@@ -80,9 +80,31 @@ const spotifySearch = (song = 'The Sign Ace of Base') => {
     )
 }
 
-// concert-this function
+// movie-this function
 const movieSearch = (movie = 'Mr. Nobody') => {
-  console.log('search a movie')
+  console.log('Searching for your film...')
+  request(`http://www.omdbapi.com/?apikey=trilogy&t=${movie}`, (err, resp, body) => {
+    // check for errors
+    if (err) return console.log(err)
+    // if successful
+    if (resp.statusCode === 200) {      
+      let film = JSON.parse(body);
+      // if it found a film
+      if (film.Response === 'True') {            
+        // log out the appropriate values      
+        console.log(`* Title: ${film.Title}`)
+        console.log(`* Released: ${film.Year}`)
+        console.log(`* IMDB Rating: ${film.Ratings[0]['Value']}`)
+        console.log(`* Rotten Tomatoes Rating: ${film.Ratings[1]['Value']}`)
+        console.log(`* Produced In: ${film.Country}`)
+        console.log(`* Language(s): ${film.Language}`)
+        console.log(`* Plot: ${film.Plot}`)
+        console.log(`* Actors: ${film.Actors}`)
+      }
+      // inform user if it found no film
+      else console.log(film.Error)
+    }    
+  })
 }
 
 // concert-this function
