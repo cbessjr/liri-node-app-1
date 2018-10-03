@@ -7,6 +7,7 @@ const moment = require('moment')
 moment().format();
 const keys = require('./keys.js')
 const spotify = new Spotify(keys.spotify);
+const fs = require('fs');
 
 
 
@@ -107,9 +108,30 @@ const movieSearch = (movie = 'Mr. Nobody') => {
   })
 }
 
-// concert-this function
+// do-what-it-says function
 const randomSearch = () => {
-  console.log('do a damned thang')
+  // grab the contents of random.txt
+  fs.readFile('random.txt', 'utf8', (err, data) => {
+    // handle errors
+    if (err) throw err;
+    // parse the incoming JSON
+    let options = JSON.parse(data);
+    // pick a random option from the resulting array
+    let option = options[Math.floor(Math.random() * options.length)]
+    // format the method
+    let method = option['method'].slice(0, option['method'].indexOf('-'));
+    // run the appropriate function
+    methods[method](option['input'])  
+  })
+
+  
+  // // This is the way the homework wanted us to do it, but I changed random.txt to allow for a true random experience
+  // fs.readFile('random.txt', 'utf8', (err, data) => {
+  //   if (err) throw err;
+  //   let parsed = data.split(',');
+  //   let method = parsed[0].slice(0, parsed[0].indexOf('-'));
+  //   methods[method](parsed[1])
+  // })
 }
 
 
@@ -121,8 +143,6 @@ const methods = {
   movie: movieSearch,
   do: randomSearch
 }
-
-
 
 
 
