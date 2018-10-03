@@ -16,7 +16,8 @@ const concertSearch = (artist = 'LCD Soundsystem') => {
   request('https://rest.bandsintown.com/artists/' + artist + '/events?app_id=codingbootcamp', (err, resp, body) => {
     // check for success
     if (!err && resp.statusCode === 200) {
-      console.log(!!JSON.parse(body)[0] ? 'Here are your concerts!' : `No concerts scheduled for ${artist} at this time.`)
+      // Inform user whether any concerts are upcoming
+      console.log(!!JSON.parse(body)[0] ? `Here are the upcoming concerts for ${artist}` : `No concerts scheduled for ${artist} at this time.`)
       // for each entry
       JSON.parse(body).forEach(entry => {
         // grab venue name, city/region/country
