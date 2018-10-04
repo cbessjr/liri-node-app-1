@@ -14,7 +14,15 @@ Method | Description
 The result of a given method is logged out to the console, and also stored locally in a log file.
 
 ## Setting up the app
-1. Clone or download this repository
+1. **Clone or download this repository**
 
 ![Clone or Download Image](https://i.imgur.com/ZP8N719.png)
 
+2. **Install npm if you dont have it**
+
+Instructions found at [npmjs.com](https://docs.npmjs.com/getting-started/installing-node)
+
+3. **Install required dependencies**
+
+In terminal (Mac) or bash (PC), navigate to the folder where you have this app. Then install dependencies:
+`npm i`
