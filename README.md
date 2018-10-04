@@ -4,12 +4,6 @@ A node.js app for discovering entertainment options.
 ## Overview
 This app allows a user to choose from one of four search options to fulfill their entertainment needs.
 
-Method | Description
------- | ----------
-`concert-this <artist name>` | Returns information on upcoming concerts for the given artist from [Bandsintown](https://www.bandsintown.com/).
-`spotify-this-song <song name>` | Returns information and a [Spotify](https://www.spotify.com) link for the given song.
-`movie-this <movie name>` | Returns information for the given movie from the [OMDB](https://www.omdbapi.com).
-`do-whatever` | Returns a random result from above.
 
 The result of a given method is logged out to the console, and also stored locally in a log file.
 
@@ -32,7 +26,7 @@ The following dependencies will be installed:
 * require
 * dotenv
 
-### 4. Obtain Spotify API Key
+### 4. Obtain Spotify API key
 Navigate to the [Spotify Developer](https://developer.spotify.com/dashboard/login) page. Login, or if you don't already have a Spotify account, you can create one for free. Once there, head over to the [dashboard](https://developer.spotify.com/dashboard/applications).
 
 ![Spotify Developer Dashboard Image](https://i.imgur.com/H81Ehgw.png)
@@ -52,3 +46,26 @@ Create a new file, called '.env' in the directory where the app is installed. Pa
 SPOTIFY_ID=your-spotify-id
 SPOTIFY_SECRET=your-spotify-secret
 ```
+This file is used by the app to interact with Spotify.
+
+## Using the app
+
+From the command line, navigate to the directory where the app is installed. To use the app, enter the following:
+```
+node liri.js <method> <input>
+```
+The different methods available are detailed below.
+
+Method | Description
+------ | ----------
+`concert-this <artist name>` | Returns information on upcoming concerts for the given artist from [Bandsintown](https://www.bandsintown.com/).
+`spotify-this-song <song name>` | Returns information and a [Spotify](https://www.spotify.com) link for the given song.
+`movie-this <movie name>` | Returns information for the given movie from the [OMDB](https://www.omdbapi.com).
+`do-whatever` | Returns a random result from above.
+
+## Future development
+
+- [ ] Integrate [inquirer](https://www.npmjs.com/package/inquirer) to streamline user experience
+- [ ] Add additional query options for existing methods
+- [ ] Add additional methods, e.g. Eventbrite, etc.
+
