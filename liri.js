@@ -8,6 +8,7 @@ moment().format();
 const keys = require('./keys.js')
 const spotify = new Spotify(keys.spotify);
 const fs = require('fs');
+const inquirer = require('inquirer')
 
 
 // function to log
