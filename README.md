@@ -15,5 +15,6 @@ The result of a given method is logged out to the console, and also stored local
 
 ## Setting up the app
 1. Clone or download this repository
-![Clone or Download Image](https://imgur.com/ZP8N719)
+
+![Clone or Download Image](https://i.imgur.com/ZP8N719.png)
 
