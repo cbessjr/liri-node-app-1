@@ -27,15 +27,19 @@ Instructions found at [npmjs.com](https://docs.npmjs.com/getting-started/install
 In terminal (Mac) or bash (PC), navigate to the folder where you have this app. Then install dependencies:  
   `npm i`  
 The following dependencies will be installed:
-    * node-spotify-api
-    * moment
-    * require
-    * dotenv
+* node-spotify-api
+* moment
+* require
+* dotenv
 
 ### 4. Obtain Spotify API Key
-Navigate to the [Spotify Developer](https://developer.spotify.com/dashboard/login) page. Login, or if you don't already have a Spotify account, you can create one for free. Once there, head over to the [dashboard](https://developer.spotify.com/dashboard/applications). 
+Navigate to the [Spotify Developer](https://developer.spotify.com/dashboard/login) page. Login, or if you don't already have a Spotify account, you can create one for free. Once there, head over to the [dashboard](https://developer.spotify.com/dashboard/applications).
+
 ![Spotify Developer Dashboard Image](https://i.imgur.com/H81Ehgw.png)
+
 Create a new app, calling it whatever you'd like. Then, from the page for the app, copy your Client ID and Client Secret.
+
 ![API Keys Image](https://i.imgur.com/DV6dMFI.png)
+
 You will need these later.
 
