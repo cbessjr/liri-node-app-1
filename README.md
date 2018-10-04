@@ -10,3 +10,10 @@ Method | Description
 `spotify-this-song <song name>` | Returns information and a [Spotify](https://www.spotify.com) link for the given song.
 `movie-this <movie name>` | Returns information for the given movie from the [OMDB](https://www.omdbapi.com).
 `do-whatever` | Returns a random result from above.
+
+The result of a given method is logged out to the console, and also stored locally in a log file.
+
+## Setting up the app
+1. Clone or download this repository
+![Clone or Download Image](https://imgur.com/ZP8N719)
+
