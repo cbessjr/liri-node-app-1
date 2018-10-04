@@ -41,5 +41,13 @@ Create a new app, calling it whatever you'd like. Then, from the page for the ap
 
 ![API Keys Image](https://i.imgur.com/DV6dMFI.png)
 
-You will need these later.
+You will need these in the next step.
 
+### 5. Create a .env file
+Create a new file, called '.env' in the directory where the app is installed. Paste the following text in, substituting your own Spotify Client and Secret API keys.
+
+`# Spotify API keys
+
+SPOTIFY_ID=your-spotify-id
+SPOTIFY_SECRET=your-spotify-secret
+`
