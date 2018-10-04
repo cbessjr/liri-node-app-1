@@ -12,7 +12,7 @@ The result of a given method is logged out to the console, and also stored local
 
 ![Clone or Download Image](https://i.imgur.com/ZP8N719.png)
 
-### 2. Install npm if you dont have it
+### 2. Install node if you dont have it
 
 Instructions found at [npmjs.com](https://docs.npmjs.com/getting-started/installing-node)
 
