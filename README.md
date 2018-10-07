@@ -49,7 +49,7 @@ SPOTIFY_SECRET=your-spotify-secret
 This file is used by the app to interact with Spotify.
 
 ## Using the app
-There are two interfaces for the app, both leading to the same functionality.
+There are two interfaces for the app, both leading to the same functionality. For a video demostration, click [here](https://drive.google.com/file/d/1WrMyf5hoYuFhEjYSWi-Y5ST3xQbY9yny/view)
 
 ### Traditional search
 
