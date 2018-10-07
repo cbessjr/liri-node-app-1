@@ -55,15 +55,15 @@ There are two interfaces for the app, both leading to the same functionality.
 
 From the command line, navigate to the directory where the app is installed. To use the app, enter the following:
 ```
-node liri.js <method> <input>
+node liri.js <method> <"input">
 ```
-The different methods available are detailed below.
+The different methods available are detailed below. Please note, the input must be in quotes ("").
 
 Method | Description
 ------ | ----------
-`concert-this <artist name>` | Returns information on upcoming concerts for the given artist from [Bandsintown](https://www.bandsintown.com/).
-`spotify-this-song <song name>` | Returns information and a [Spotify](https://www.spotify.com) link for the given song.
-`movie-this <movie name>` | Returns information for the given movie from the [OMDB](https://www.omdbapi.com).
+`concert-this "artist name"` | Returns information on upcoming concerts for the given artist from [Bandsintown](https://www.bandsintown.com/).
+`spotify-this-song "song name"` | Returns information and a [Spotify](https://www.spotify.com) link for the given song.
+`movie-this "movie name"` | Returns information for the given movie from the [OMDB](https://www.omdbapi.com).
 `do-whatever` | Returns a random result from above.
 
 ### NEW! Inquirer-based input
