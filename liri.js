@@ -1,4 +1,3 @@
-
 // dependencies
 require("dotenv").config()
 const Spotify = require('node-spotify-api')
@@ -150,7 +149,9 @@ const randomSearch = () => {
 
 // App methods
 const methods = {
+  band: concertSearch,
   concert: concertSearch,
+  song: spotifySearch,
   spotify: spotifySearch,
   movie: movieSearch,
   do: randomSearch
@@ -159,5 +160,54 @@ const methods = {
 
 
 
-let curMethod = process.argv[2].slice(0, process.argv[2].indexOf('-'))
-methods[curMethod](process.argv[3])
+
+
+let curMethod = '';
+if (process.argv[2]) {
+  curMethod = process.argv[2].slice(0, process.argv[2].indexOf('-'))
+  methods[curMethod](process.argv[3])
+}
+
+else {
+  inquirer.prompt([
+    {
+      name: 'method',
+      message: 'What do you want to search for?',
+      type: 'list',
+      choices: [
+        {
+          name: 'Search concert dates for a band.',
+          value: 'band',
+          short: 'Concert search.'
+        },
+        {
+          name: 'Search Spotify for a song.',
+          value: 'song',
+          short: 'Spotify song search.'
+        },
+        {
+          name: 'Search OMDB for movie info.',
+          value: 'movie',
+          short: 'Movie search.'
+        },
+        {
+          name: 'Do a random search!',
+          value: 'do',
+          short: 'Random search.'
+        }
+      ]
+    }
+  ]).then(ans => {
+    if (ans.method === 'do') return methods['do']()
+    curMethod = ans.method
+    inquirer.prompt([
+      {
+        name: 'term',
+        message: `What ${curMethod} are you searching for?`
+      }
+    ]).then(term => {
+      methods[curMethod](term.term)     
+    })
+  })
+}
+

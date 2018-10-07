@@ -4,7 +4,6 @@ A node.js app for discovering entertainment options.
 ## Overview
 This app allows a user to choose from one of four search options to fulfill their entertainment needs.
 
-
 The result of a given method is logged out to the console, and also stored locally in a log file.
 
 ## Setting up the app
@@ -21,10 +20,11 @@ Instructions found at [npmjs.com](https://docs.npmjs.com/getting-started/install
 In terminal (Mac) or bash (PC), navigate to the folder where you have this app. Then install dependencies:  
   `npm i`  
 The following dependencies will be installed:
-* node-spotify-api
-* moment
-* require
-* dotenv
+* [node-spotify-api](https://www.npmjs.com/package/node-spotify-api)
+* [moment](http://momentjs.com/docs/#/manipulating/)
+* [require](https://requirejs.org/)
+* [dotenv](https://www.npmjs.com/package/dotenv)
+* [inquirer](https://www.npmjs.com/package/inquirer)
 
 ### 4. Obtain Spotify API key
 Navigate to the [Spotify Developer](https://developer.spotify.com/dashboard/login) page. Login, or if you don't already have a Spotify account, you can create one for free. Once there, head over to the [dashboard](https://developer.spotify.com/dashboard/applications).
@@ -49,6 +49,9 @@ SPOTIFY_SECRET=your-spotify-secret
 This file is used by the app to interact with Spotify.
 
 ## Using the app
+There are two interfaces for the app, both leading to the same functionality.
+
+### Traditional search
 
 From the command line, navigate to the directory where the app is installed. To use the app, enter the following:
 ```
@@ -63,9 +66,17 @@ Method | Description
 `movie-this <movie name>` | Returns information for the given movie from the [OMDB](https://www.omdbapi.com).
 `do-whatever` | Returns a random result from above.
 
+### NEW! Inquirer-based input
+
+From the command line, navigate to the directory where the app is installed. To use the app, enter the following:
+```
+node liri.js
+```
+Follow the prompts to perform your search.
+
 ## Future development
 
-- [ ] Integrate [inquirer](https://www.npmjs.com/package/inquirer) to streamline user experience
+- [x] Integrate [inquirer](https://www.npmjs.com/package/inquirer) to streamline user experience
 - [ ] Add additional query options for existing methods
 - [ ] Add additional methods, e.g. Eventbrite, etc.
 
